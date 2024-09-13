@@ -9,9 +9,9 @@ const Statistics = ({ good, neutral, bad, total }) => {
     const neutrals = neutral * values[1];
     const bads = bad * values[2];
     const weightedTotal = goods + neutrals + bads;
-    console.log(values[0], values[1], values[2]);
-    console.log(good, bad, neutral);
-    console.log(goods, neutrals, bads, total);
+    // console.log(values[0], values[1], values[2]);
+    // console.log(good, bad, neutral);
+    // console.log(goods, neutrals, bads, total);
     const final = weightedTotal / total;
     return final;
   };
@@ -36,7 +36,7 @@ const Statistics = ({ good, neutral, bad, total }) => {
   return (
     <div>
       <h1>statistics</h1>
-      <StatisticLine text={"good"} value={good} />
+      {/* <StatisticLine text={"good"} value={good} />
       <StatisticLine text={"neutral"} value={neutral} />
       <StatisticLine text={"bad"} value={bad} />
       <StatisticLine text={"total"} value={total} />
@@ -47,7 +47,35 @@ const Statistics = ({ good, neutral, bad, total }) => {
       <StatisticLine
         text={"positive"}
         value={calculatePositivePercentage(good, total)}
-      />
+      /> */}
+      <table>
+        <tbody>
+          <tr>
+            <td>{"good"}</td>
+            <td>{good}</td>
+          </tr>
+          <tr>
+            <td>{"neutral"}</td>
+            <td>{neutral}</td>
+          </tr>
+          <tr>
+            <td>{"bad"}</td>
+            <td>{bad}</td>
+          </tr>
+          <tr>
+            <td>{"total"}</td>
+            <td>{total}</td>
+          </tr>
+          <tr>
+            <td>{"average"}</td>
+            <td>{calculateAverageScore(good, neutral, bad, total)}</td>
+          </tr>
+          <tr>
+            <td>{"positive"}</td>
+            <td>{calculatePositivePercentage(good, total)} %</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 };
